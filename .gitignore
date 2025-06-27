@@ -1,4 +1,4 @@
-# Python
+# --- Python ---
 __pycache__/
 *.pyc
 *.pyo
@@ -6,6 +6,13 @@ __pycache__/
 .env
 venv/
 instance/
+
+# --- Node.js ---
+node_modules/
+dist/
+dist-ssr/
+build/
+*.local
 
 # Logs
 logs
@@ -16,11 +23,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# VS Code
+# --- Editor/IDE ---
 .vscode/
 !.vscode/extensions.json
-
-# Editor and IDE files
 .idea
 *.suo
 *.ntvs*
@@ -28,12 +33,6 @@ lerna-debug.log*
 *.sln
 *.sw?
 
-# Node.js build outputs
-node_modules/
-dist/
-dist-ssr/
-build/
-
-# OS-generated files
+# --- OS-specific ---
 .DS_Store
 Thumbs.db

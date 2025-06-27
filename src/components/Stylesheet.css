@@ -1,0 +1,136 @@
+/*-----Searchbar----*/
+.searchbar{
+    display:flex;
+    border: 2px solid;
+    border-radius: 8px;
+    padding: 3px;
+    box-shadow: black;
+
+}
+.product-detail {
+  max-width: 50vw;
+  padding: 20px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.product-detail button {
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.product-detail button:hover {
+  background-color: #e0e0e0;
+}
+
+.product-box {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-box img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 4px;
+  align-self: center;
+}
+
+.product-box p {
+  margin: 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+.product-box p strong {
+  color: #000;
+  font-weight: 600;
+}
+
+
+/* ------CREATEPRODUCTFORM.jsx-------*/
+.create-container{
+   
+    border: none;
+    box-shadow: rgb(140, 202, 24);
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2px solid;
+    border-radius: 5px;
+    background-color: rgb(223, 226, 17);
+    box-shadow: rgb(214, 184, 14);
+    color: black;
+    justify-content: space-between;
+    width: 70vw;
+    height: 100vh;
+}
+
+.form label{
+    color: black;
+    font-family: sans-serif;
+    font-weight: lighter;
+    text-shadow: rgb(166, 168, 168);
+}
+
+.form input{
+    border: none;
+    box-shadow: rgb(36, 36, 36);
+    border-radius: 3px;
+    padding: 2px;
+    width: 65vw;
+    justify-content: space-around;
+}
+
+
+/*-------UPDATEPRODUCTFORM.jsx-------*/
+.update-input-container{
+    display: flex;
+    border: 2px solid;
+    border-radius: 3px;
+    box-shadow: rgb(128, 209, 48);
+    flex-direction: row;
+    justify-content: space-between;
+}
+update-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 2px solid;
+    border-radius: 5px;
+    background-color: rgb(223, 226, 17);
+    box-shadow: rgb(214, 184, 14);
+    color: black;
+    justify-content: space-between;
+    width: 50vw;
+    height: 100vh;
+}
+
+.update-form input{
+    border: none;
+    box-shadow: rgb(36, 36, 36);
+    border-radius: 3px;
+    padding: 2px;
+    width: 45vw;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+}
