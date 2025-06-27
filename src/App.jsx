@@ -1,11 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
-
+import { Routes, Route, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Home from './pages/Home';
 import CartPage from './pages/CartPage';
 import OrderDetailsPage from './pages/OrderDetailsPage';
 import DashboardAdmin from './pages/DashboardAdmin';
@@ -13,35 +11,35 @@ import DashboardCustomer from './pages/DashboardCustomer';
 import DashboardDriver from './pages/DashboardDriver';
 import Unauthorized from './pages/Unauthorized';
 
-import ProductManager from './components/ProductManager';
-import MainApp from './components/MainApp';
+import ProductManager from './components/ProductManager/ProductManager';
+import MainApp from './components/ProductManager/MainApp';
+import './App.css';
+import { useAuth } from "./context/AuthContext";
+
 
 function App() {
+  const { user } = useAuth();
+  const isAdmin = user?.role === 'admin';
+
   return (
-    <Router>
-      <Navbar />
-      
-      {/* Extra links for development/testing */}
+    <>
       <nav id="nav-bar">
-        <Link to="/">Main</Link>
-        <Link to="/cart">Cart</Link>
-        <Link to="/ProductManager">Product Manager</Link>
+        <Navbar />
+        <h1>Mad Carts</h1>
+        <Link to="/" className="link">Home</Link> |
+        <Link to="/cart" className="link">Cart</Link> |
+        {isAdmin && <Link to="/ProductManager" className="link">Product Manager</Link>}
       </nav>
 
       <Routes>
-        {/* Default redirect */}
-        <Route path="/" element={<MainApp />} />
-
         {/* Auth routes */}
-        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
         {/* Public routes */}
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<MainApp />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/orders/:orderId" element={<OrderDetailsPage />} />
-
-        {/* Product Manager UI */}
         <Route path="/ProductManager" element={<ProductManager />} />
 
         {/* Protected dashboards */}
@@ -70,13 +68,11 @@ function App() {
           }
         />
 
-        {/* Unauthorized fallback */}
+        {/* Fallbacks */}
         <Route path="/unauthorized" element={<Unauthorized />} />
-
-        {/* Fallback route */}
         <Route path="*" element={<div>Page Not Found</div>} />
       </Routes>
-    </Router>
+    </>
   );
 }
 

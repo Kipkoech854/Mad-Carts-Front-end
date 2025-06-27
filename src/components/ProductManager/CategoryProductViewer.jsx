@@ -1,25 +1,20 @@
-import axios from 'axios';
+
 import React, { useEffect, useState } from 'react';
+import { fetchProductsByCategory } from '../../api/productManagerApi.js';
+import AddToCartButton from '../AddToCartButton.jsx';
+
 
 function CategoryProductViewer({ category, logRecentView }) {
   const [products, setProducts] = useState([]);
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    async function fetchProducts() {
-      try {
-        console.log("Fetching products for category:", category);
-        const res = await axios.get(`http://127.0.0.1:5555/category`, {
-          params: { q: category }
-        });
-        console.log("Fetched products:", res.data);
-        setProducts(res.data);
-        setSelected(null);
-      } catch (err) {
-        console.error("Failed to fetch products:", err);
-      }
+    if (category) {
+      fetchProductsByCategory(category)
+        .then(setProducts)
+        .then(() => setSelected(null))
+        .catch(err => console.error("Error loading products:", err));
     }
-    if (category) fetchProducts();
   }, [category]);
 
   const handleClick = (product) => {
@@ -38,6 +33,7 @@ function CategoryProductViewer({ category, logRecentView }) {
         <p><strong>Price:</strong> KES {selected.price}</p>
         <p><strong>Brand:</strong> {selected.brand}</p>
         <p>{selected.description}</p>
+        <AddToCartButton/>
       </div>
     );
   }

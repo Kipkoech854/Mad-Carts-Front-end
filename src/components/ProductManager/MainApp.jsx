@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { fetchCategories, logRecentView  } from '../../api/productManagerApi';
 import CategoryProductViewer from './CategoryProductViewer';
 import Searchbar from './Searchbar';
 
@@ -8,25 +8,17 @@ function MainApp() {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const loadCategories = async () => {
       try {
-        const res = await axios.get('http://127.0.0.1:5555/categories');
-        setCategories(res.data);
+        const data = await fetchCategories();
+        setCategories(data);
       } catch (err) {
-        console.error("Error fetching categories:", err);
+        console.error("Error loading categories:", err);
       }
     };
 
-    fetchCategories();
+    loadCategories();
   }, []);
-
-  const logRecentView = (productId) => {
-    axios.post('http://127.0.0.1:5555/create-history', {
-      id: productId
-    }).catch(err => {
-      console.error('Failed to log recent view:', err);
-    });
-  };
 
   return (
     <>
@@ -72,3 +64,4 @@ function MainApp() {
 }
 
 export default MainApp;
+

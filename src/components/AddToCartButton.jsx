@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import useCartLogic from '../hooks/useCart';
+import {useCart} from '../hooks/useCart';
 
 const AddToCartButton = ({ product }) => {
-  const { addItem } = useCartLogic();
+  const { addItem } = useCart();
   const [loading, setLoading] = useState(false);
 
   const handleAddToCart = async () => {

@@ -1,0 +1,31 @@
+/*-------NavBar.jsx-------*/
+.sign-up-icon{
+    display: flex;
+    flex-direction: row;
+    max-width: 40vw;
+    border: 1px solid;
+    border-radius: 6px;
+    box-shadow: aliceblue;
+
+}
+
+.sign-in{
+    color:black;
+    background-color: rgb(161, 9, 175);
+    border-radius: 3px;
+    border: none;
+    box-shadow: rgb(9, 9, 20);
+    font-family: sans-serif;
+    align-content: center;
+    justify-content: space-between;
+}
+.create-account{
+    color:black;
+    background-color: rgb(17, 142, 226);
+    border-radius: 3px;
+    border: none;
+    box-shadow: rgb(11, 19, 8);
+    font-family: sans-serif;
+    align-content: center;
+    justify-content: space-between;
+}

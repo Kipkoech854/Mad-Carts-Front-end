@@ -7,8 +7,9 @@ function HomeProducts() {
  
   useEffect(() => {
     (async () => {
-      const res = await fetch('http://127.0.0.1:5555/getuniquecategories');
+      const res = await fetch('http://127.0.0.1:5555/categories');
       const data = await res.json();
+      console.log(data)
       setUniqueCategories(data);
     })();
   }, []);
