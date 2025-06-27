@@ -1,10 +1,14 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
+import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
+
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
-import Navbar from './components/Navbar';
-import ProtectedRoute from './components/ProtectedRoute';
+import CartPage from './pages/CartPage';
+import OrderDetailsPage from './pages/OrderDetailsPage';
 import DashboardAdmin from './pages/DashboardAdmin';
 import DashboardCustomer from './pages/DashboardCustomer';
 import DashboardDriver from './pages/DashboardDriver';
@@ -12,13 +16,22 @@ import Unauthorized from './pages/Unauthorized';
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        {/* Default redirect to /cart or you can switch to /login if needed */}
+        <Route path="/" element={<Navigate to="/cart" replace />} />
 
+        {/* Auth routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        {/* Public routes */}
+        <Route path="/home" element={<Home />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/orders/:orderId" element={<OrderDetailsPage />} />
+
+        {/* Protected dashboards */}
         <Route
           path="/admin"
           element={
@@ -44,9 +57,10 @@ function App() {
           }
         />
 
+        {/* Unauthorized fallback */}
         <Route path="/unauthorized" element={<Unauthorized />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
